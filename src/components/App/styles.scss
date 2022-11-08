@@ -11,3 +11,7 @@
   display: block;
   margin: 0.5rem auto;
 }
+
+.header, .meta {
+  word-break: break-all;
+}

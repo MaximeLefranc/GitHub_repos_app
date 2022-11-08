@@ -44,11 +44,19 @@ function App() {
   - menu avec des Link / NavLink qui modifie l'url sans recharger de page
   */
 
+  /*
+  Plan d'action Bonus MoreButton
+  - changer la requete pour charger au submit la premiere page
+  - afficher un bouton si le nombre de resultats est superieur au nombre de repos affichés : si > 9
+  - au clic sur ce bouton déclancher un appel api pour charger les 9 suivantes donc la page 2
+  - stocker dans le state le numéro de page
+  */
+
   // fonction qui lance la requete API et qui enregistre les resultats dans le state (dans repos)
   const fetchRepos = async () => {
     try {
       setIsLoading(true); // on demarre le loader
-      const response = await axios.get(`https://api.github.com/search/repositories?q=${search}`);
+      const response = await axios.get(`https://api.github.com/search/repositories?q=${search}&sort=stars&order=desc&page=1&per_page=9`);
 
       // mise à jour du state avec les nouveaux repos
       setRepos(response.data.items);
