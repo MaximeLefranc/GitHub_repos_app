@@ -5,11 +5,13 @@ import SearchBar from '../SearchBar';
 import './styles.scss';
 
 function App() {
+  const message = "Coucou";
+
   return (
     <div className="app">
       <img src={logo} alt="logo Github" />
       <SearchBar />
-      <Message />
+      <Message message={message} />
       <ReposResults />
     </div>
   );

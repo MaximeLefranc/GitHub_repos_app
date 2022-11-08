@@ -1,9 +1,14 @@
 import { Message as MessageSemantic } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
-function Message() {
+function Message({ message }) {
   return (
-    <MessageSemantic> un message </MessageSemantic>
+    <MessageSemantic> {message} </MessageSemantic>
   );
 }
+
+Message.propTypes = {
+  message: PropTypes.string.isRequired,
+};
 
 export default Message;
