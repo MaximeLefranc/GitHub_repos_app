@@ -12,7 +12,7 @@ function App() {
   const [search, setSearch] = useState('');
 
   // message pour Message
-  const [message, setMessage] = useState('Il y a x resultats(s)');
+  const [message, setMessage] = useState('');
 
   // liste des repos pour ReposResults
   const [repos, setRepos] = useState([]);
@@ -24,17 +24,34 @@ function App() {
 
       // mise à jour du state avec les nouveaux repos
       setRepos(response.data.items);
+
+      // mise à jour du message avec le count des repos
+      setMessage(`La recherche a donné ${response.data.total_count} resultats`);
     }
     catch (e) {
-      console.log(e);
+      // mise à jour du message avec une erreur
+      setMessage('Désolée, une erreur est survenue ...');
     }
   };
+
+  /*
+  Version de fetchRepos non asynchrone avec .then et .catch
+  const fetchRepos = () => {
+    axios.get(`https://api.github.com/search/repositories?q=${search}`)
+      .then((response) => {
+        setRepos(response.data.items);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  */
 
   return (
     <div className="app">
       <img src={logo} alt="logo Github" />
       <SearchBar search={search} setSearch={setSearch} fetchRepos={fetchRepos} />
-      <Message message={message} />
+      { (message !== '') && <Message message={message} /> }
       <ReposResults repos={repos} />
     </div>
   );
