@@ -8,6 +8,7 @@ import './styles.scss';
 import axios from 'axios';
 import Faq from '../Faq';
 import { Route, Routes } from 'react-router-dom';
+import NotFound from '../NotFound';
 
 function App() {
   // input controlé pour SearchBar
@@ -22,10 +23,19 @@ function App() {
   /*
   Plan d'action BONUS Router :
   x installer react-router-dom
+
   x englober notre app avec BrowserRouter
-  - avoir une route vers /faq qui affiche un composant Faq
-    qui lui meme affiche une liste de questions
-  - avoir une route vers / qui affiche la recherche
+
+  x avoir une route vers /faq qui affiche un composant Faq
+    qui lui meme affiche une liste de questions :
+    <Route path="/faq" element={<Faq />} />
+
+  x avoir une route vers / qui affiche la recherche
+    <Route path="/" element={Tous les sous composants de la recherche} />
+
+  x avoir une route par défaut (url *) qui va matcher si aucune des 2 autre n'a matché
+    <Route path="*" element={<404 />} />
+
   - menu avec des Link / NavLink qui modifie l'url sans recharger de page
   */
 
@@ -79,7 +89,7 @@ function App() {
             </>
           )}
         />
-
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
