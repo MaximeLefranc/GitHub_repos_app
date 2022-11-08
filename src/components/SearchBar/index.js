@@ -1,8 +1,17 @@
+import { Input, Form, Segment } from 'semantic-ui-react';
+
 function SearchBar() {
   return (
-    <div>
-      searchBar
-    </div>
+    <Form>
+      <Segment>
+        <Input
+          fluid
+          icon="search"
+          placeholder="Search..."
+          iconPosition="left"
+        />
+      </Segment>
+    </Form>
   );
 }
 
