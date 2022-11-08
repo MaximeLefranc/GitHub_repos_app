@@ -17,6 +17,16 @@ function App() {
   // liste des repos pour ReposResults
   const [repos, setRepos] = useState([]);
 
+  /*
+  Plan d'action BONUS Router :
+  - installer react-router-dom
+  - englober notre app avec BrowserRouter
+  - avoir une route vers /faq qui affiche un composant Faq
+    qui lui meme affiche une liste de questions
+  - avoir une route vers / qui affiche la recherche
+  - menu avec des Link / NavLink qui modifie l'url sans recharger de page
+  */
+
   // fonction qui lance la requete API et qui enregistre les resultats dans le state (dans repos)
   const fetchRepos = async () => {
     try {
