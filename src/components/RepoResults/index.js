@@ -22,7 +22,7 @@ function ReposResults({ repos, totalCount, fetchMoreRepo }) {
         }
       </Card.Group>
       {/* affichage conditionnel : on affiche que si il reste des resultats non chargés */}
-      { totalCount > repos.length && <MoreButton fetchMoreRepo={fetchMoreRepo} /> }
+      {/*totalCount > repos.length && <MoreButton fetchMoreRepo={fetchMoreRepo} />*/}
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Route, Routes } from 'react-router-dom';
 import logo from '../../assets/images/logo-github.png';
@@ -10,7 +10,7 @@ import SearchPage from '../SearchPage';
 
 function App() {
   // input controlé pour SearchBar
-  const [search, setSearch] = useState('test');
+  const [search, setSearch] = useState('');
   // message pour Message
   const [message, setMessage] = useState('');
   // liste des repos pour ReposResults
