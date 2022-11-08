@@ -1,9 +1,13 @@
-import './styles.css';
+import logo from '../../assets/images/logo-github.png';
+import './styles.scss';
 
 function App() {
   return (
     <div className="app">
-      <h1>Composant : App</h1>
+      <img src={logo} alt="logo Github" />
+      {/* <SearchBar />
+      <Message />
+      <ReposResults /> */}
     </div>
   );
 }
