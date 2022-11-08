@@ -1,7 +1,6 @@
 .app {
   width: 700px;
   margin: 0 auto;
-  text-align: center;
   background-color: #ECF0F1;
   min-height: 100vh;
   padding: 1rem;
@@ -9,4 +8,6 @@
 
 .app img {
   max-width: 150px;
+  display: block;
+  margin: 0.5rem auto;
 }
