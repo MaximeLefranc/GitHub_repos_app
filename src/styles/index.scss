@@ -1,7 +1,8 @@
 @use 'reset';
 @use 'vars';
 
-body {
+// on peut ajouter un peu de force à notre selecteur pour qu'il passe devant la regle de semantic-ui
+html body {
   font-family: sans-serif;
   background-color: #bdc3c7;
 }

@@ -1,3 +1,4 @@
+import 'semantic-ui-css/semantic.min.css';
 import { createRoot } from 'react-dom/client';
 import App from 'src/components/App';
 
