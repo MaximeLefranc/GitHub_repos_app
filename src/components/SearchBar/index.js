@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types';
 import { Input, Form, Segment } from 'semantic-ui-react';
 
-function SearchBar({ search, setSearch }) {
+function SearchBar({ search, setSearch, fetchRepos }) {
   return (
-    <Form>
+    <Form
+      onSubmit={() => {
+        // on lance l'appel API pour enregistrer dans le state les repos
+        fetchRepos();
+      }}
+    >
       <Segment>
         <Input
           fluid
@@ -25,6 +30,8 @@ SearchBar.propTypes = {
   search: PropTypes.string.isRequired,
   // la fonction pour modifier cette valeur dans le state de App
   setSearch: PropTypes.func.isRequired,
+  // la fonction pour enregistrer dans le state les repos de la recherche
+  fetchRepos: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
