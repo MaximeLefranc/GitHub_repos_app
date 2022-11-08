@@ -15,18 +15,16 @@ import Spinner from '../Spinner';
 function App() {
   // input controlé pour SearchBar
   const [search, setSearch] = useState('');
-
   // message pour Message
   const [message, setMessage] = useState('');
-
   // liste des repos pour ReposResults
   const [repos, setRepos] = useState([]);
-
   // etat de loading
   const [isLoading, setIsLoading] = useState(false);
-
   // nombre total de resultats de la derniere requete
   const [totalCount, setTotalCount] = useState(0);
+  // numéro de page
+  const [page, setPage] = useState(1);
 
   /*
   Plan d'action BONUS Router :
@@ -60,6 +58,7 @@ function App() {
     try {
       setIsLoading(true); // on demarre le loader
       const response = await axios.get(`https://api.github.com/search/repositories?q=${search}&sort=stars&order=desc&page=1&per_page=9`);
+      setPage(1); // on revient à la page 1 pour le prochain rendu
 
       // mise à jour du state avec les nouveaux repos et le nbr de results
       setRepos(response.data.items);
@@ -85,7 +84,10 @@ function App() {
 
     try {
       setIsLoading(true); // on demarre le loader
-      const response = await axios.get(`https://api.github.com/search/repositories?q=${search}&sort=stars&order=desc&page=2&per_page=9`);
+      
+      const response = await axios.get(`https://api.github.com/search/repositories?q=${search}&sort=stars&order=desc&page=${page+1}&per_page=9`);
+      // je passe à la page d'après pour le prochain rendu
+      setPage(page + 1);
 
       // mise à jour du state avec les nouveaux repos mais on veut garder les anciens
       setRepos([
