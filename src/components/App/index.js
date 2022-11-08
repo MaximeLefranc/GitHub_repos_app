@@ -5,21 +5,23 @@ import ReposResults from '../RepoResults';
 import Message from '../Message';
 import SearchBar from '../SearchBar';
 import './styles.scss';
-import data from '../../data/repos';
 
 function App() {
-  /* on créé un emplacement dans le state de App pour stocker la valeur de l'input,
-  on donne cette valeur et la fonction qui permet de la modifier à SearchBar : via les props */
-  const [search, setSearch] = useState('chocolat');
+  // input controlé pour SearchBar
+  const [search, setSearch] = useState('');
 
-  const message = 'La recherche porte sur ';
+  // message pour Message
+  const [message, setMessage] = useState('Il y a x resultats(s)');
+
+  // liste des repos pour ReposResults
+  const [repos, setRepos] = useState([]);
 
   return (
     <div className="app">
       <img src={logo} alt="logo Github" />
       <SearchBar search={search} setSearch={setSearch} />
       <Message message={message} />
-      <ReposResults repos={data.items} />
+      <ReposResults repos={repos} />
     </div>
   );
 }
