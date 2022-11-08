@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Input, Form, Segment } from 'semantic-ui-react';
 
-function SearchBar({ search, setSearch, fetchRepos }) {
+function SearchBar({ search, setSearch, fetchRepos, isLoading }) {
   return (
     <Form
       onSubmit={() => {
@@ -19,6 +19,7 @@ function SearchBar({ search, setSearch, fetchRepos }) {
           onChange={(e) => {
             setSearch(e.target.value);
           }}
+          loading={isLoading}
         />
       </Segment>
     </Form>
@@ -32,6 +33,8 @@ SearchBar.propTypes = {
   setSearch: PropTypes.func.isRequired,
   // la fonction pour enregistrer dans le state les repos de la recherche
   fetchRepos: PropTypes.func.isRequired,
+  // le booleen qui indique si on est en etat de loading
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default SearchBar;

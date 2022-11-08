@@ -10,6 +10,7 @@ import Faq from '../Faq';
 import { Route, Routes } from 'react-router-dom';
 import NotFound from '../NotFound';
 import NavBar from '../NavBar';
+import Spinner from '../Spinner';
 
 function App() {
   // input controlé pour SearchBar
@@ -20,6 +21,9 @@ function App() {
 
   // liste des repos pour ReposResults
   const [repos, setRepos] = useState([]);
+
+  // etat de loading
+  const [isLoading, setIsLoading] = useState(false);
 
   /*
   Plan d'action BONUS Router :
@@ -43,6 +47,7 @@ function App() {
   // fonction qui lance la requete API et qui enregistre les resultats dans le state (dans repos)
   const fetchRepos = async () => {
     try {
+      setIsLoading(true); // on demarre le loader
       const response = await axios.get(`https://api.github.com/search/repositories?q=${search}`);
 
       // mise à jour du state avec les nouveaux repos
@@ -55,6 +60,7 @@ function App() {
       // mise à jour du message avec une erreur
       setMessage('Désolée, une erreur est survenue ...');
     }
+    setIsLoading(false); // dans tous les cas on stop le loader
   };
 
   /*
@@ -85,8 +91,14 @@ function App() {
                 search={search}
                 setSearch={setSearch}
                 fetchRepos={fetchRepos}
+                isLoading={isLoading}
               />
+              {/* affichages conditionnels :
+              - on affiche <Message> que si message vaut non chaine vide
+              - on affiche <Spinner> que si isLoading vaut vrai
+              */}
               {(message !== '') && <Message message={message} />}
+              {isLoading && <Spinner />}
               <ReposResults repos={repos} />
             </>
           )}
