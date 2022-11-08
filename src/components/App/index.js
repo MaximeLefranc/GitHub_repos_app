@@ -19,8 +19,8 @@ function App() {
 
   /*
   Plan d'action BONUS Router :
-  - installer react-router-dom
-  - englober notre app avec BrowserRouter
+  x installer react-router-dom
+  x englober notre app avec BrowserRouter
   - avoir une route vers /faq qui affiche un composant Faq
     qui lui meme affiche une liste de questions
   - avoir une route vers / qui affiche la recherche
