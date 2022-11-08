@@ -9,6 +9,7 @@ import axios from 'axios';
 import Faq from '../Faq';
 import { Route, Routes } from 'react-router-dom';
 import NotFound from '../NotFound';
+import NavBar from '../NavBar';
 
 function App() {
   // input controlé pour SearchBar
@@ -72,6 +73,7 @@ function App() {
   return (
     <div className="app">
       <img src={logo} alt="logo Github" />
+      <NavBar />
 
       <Routes>
         <Route path="/faq" element={<Faq />} />
