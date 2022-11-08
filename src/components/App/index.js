@@ -11,6 +11,7 @@ import { Route, Routes } from 'react-router-dom';
 import NotFound from '../NotFound';
 import NavBar from '../NavBar';
 import Spinner from '../Spinner';
+import SearchPage from '../SearchPage';
 
 function App() {
   // input controlé pour SearchBar
@@ -125,21 +126,16 @@ function App() {
         <Route
           path="/"
           element={(
-            <>
-              <SearchBar
-                search={search}
-                setSearch={setSearch}
-                fetchRepos={fetchRepos}
-                isLoading={isLoading}
-              />
-              {/* affichages conditionnels :
-              - on affiche <Message> que si message vaut non chaine vide
-              - on affiche <Spinner> que si isLoading vaut vrai
-              */}
-              {(message !== '') && <Message message={message} />}
-              {isLoading && <Spinner />}
-              <ReposResults repos={repos} totalCount={totalCount} fetchMoreRepo={fetchMoreRepo} />
-            </>
+            <SearchPage
+              search={search}
+              setSearch={setSearch}
+              fetchRepos={fetchRepos}
+              isLoading={isLoading}
+              message={message}
+              repos={repos}
+              totalCount={totalCount}
+              fetchMoreRepo={fetchMoreRepo}
+            />
           )}
         />
         <Route path="*" element={<NotFound />} />
