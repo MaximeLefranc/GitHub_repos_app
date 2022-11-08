@@ -1,10 +1,13 @@
 import PropTypes from 'prop-types';
 import { Input, Form, Segment } from 'semantic-ui-react';
 
-function SearchBar({ search, setSearch, fetchRepos, isLoading }) {
+function SearchBar({
+  search, setSearch, fetchRepos, isLoading,
+}) {
   return (
     <Form
       onSubmit={() => {
+        // ici pas besoin de prevent default car le composant Form de semantic iu le fait deja
         // on lance l'appel API pour enregistrer dans le state les repos
         fetchRepos();
       }}

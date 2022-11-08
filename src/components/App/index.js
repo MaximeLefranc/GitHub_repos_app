@@ -1,21 +1,16 @@
 import { useState } from 'react';
-
-import logo from '../../assets/images/logo-github.png';
-import ReposResults from '../RepoResults';
-import Message from '../Message';
-import SearchBar from '../SearchBar';
-import './styles.scss';
 import axios from 'axios';
-import Faq from '../Faq';
 import { Route, Routes } from 'react-router-dom';
+import logo from '../../assets/images/logo-github.png';
+import './styles.scss';
+import Faq from '../Faq';
 import NotFound from '../NotFound';
 import NavBar from '../NavBar';
-import Spinner from '../Spinner';
 import SearchPage from '../SearchPage';
 
 function App() {
   // input controlé pour SearchBar
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState('test');
   // message pour Message
   const [message, setMessage] = useState('');
   // liste des repos pour ReposResults
@@ -29,20 +24,15 @@ function App() {
 
   /*
   Plan d'action BONUS Router :
-  x installer react-router-dom
-
-  x englober notre app avec BrowserRouter
-
-  x avoir une route vers /faq qui affiche un composant Faq
+  - installer react-router-dom
+  - englober notre app avec BrowserRouter
+  - avoir une route vers /faq qui affiche un composant Faq
     qui lui meme affiche une liste de questions :
     <Route path="/faq" element={<Faq />} />
-
-  x avoir une route vers / qui affiche la recherche
+  - avoir une route vers / qui affiche la recherche
     <Route path="/" element={Tous les sous composants de la recherche} />
-
-  x avoir une route par défaut (url *) qui va matcher si aucune des 2 autre n'a matché
+  - avoir une route par défaut (url *) qui va matcher si aucune des 2 autre n'a matché
     <Route path="*" element={<404 />} />
-
   - menu avec des Link / NavLink qui modifie l'url sans recharger de page
   */
 
@@ -85,7 +75,8 @@ function App() {
 
     try {
       setIsLoading(true); // on demarre le loader
-      
+
+      console.log('valeur de search', search);
       const response = await axios.get(`https://api.github.com/search/repositories?q=${search}&sort=stars&order=desc&page=${page+1}&per_page=9`);
       // je passe à la page d'après pour le prochain rendu
       setPage(page + 1);

@@ -37,6 +37,7 @@ ReposResults.propTypes = {
     }).isRequired,
   })).isRequired,
   fetchMoreRepo: PropTypes.func.isRequired,
+  totalCount: PropTypes.number.isRequired,
 };
 
 export default ReposResults;
