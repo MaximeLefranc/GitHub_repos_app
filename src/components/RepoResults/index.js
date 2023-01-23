@@ -1,8 +1,7 @@
 import { Card } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import MoreButton from '../MoreButton';
 
-function ReposResults({ repos, totalCount, fetchMoreRepo }) {
+function ReposResults({ repos }) {
   // on a repos qui est un tableau d'objets
   // on veut un tableau de Card pour notre JSX
 
@@ -22,7 +21,7 @@ function ReposResults({ repos, totalCount, fetchMoreRepo }) {
         }
       </Card.Group>
       {/* affichage conditionnel : on affiche que si il reste des resultats non chargés */}
-      {/*totalCount > repos.length && <MoreButton fetchMoreRepo={fetchMoreRepo} />*/}
+      {/* totalCount > repos.length && <MoreButton fetchMoreRepo={fetchMoreRepo} /> */}
     </>
   );
 }
@@ -36,8 +35,6 @@ ReposResults.propTypes = {
       avatar_url: PropTypes.string.isRequired,
     }).isRequired,
   })).isRequired,
-  fetchMoreRepo: PropTypes.func.isRequired,
-  totalCount: PropTypes.number.isRequired,
 };
 
 export default ReposResults;

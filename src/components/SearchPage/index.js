@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import Message from '../Message';
 import ReposResults from '../RepoResults';
 import SearchBar from '../SearchBar';
